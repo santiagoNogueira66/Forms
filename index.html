@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Testando a TAG <i>fieldset</i></h1></header>
+    <div class="container">
+    <form action="">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <div class="input-box">
+                <span>Nome</span>
+                <input type="text" id="name" placeholder="Santiago Nogueira" maxlength="20" >
+            </div>
+           
+            <div class="input-box">
+            <span>Data de Nascimento</span>
+            <input type="date" id="nascimento">
+        </div>
+        <div class="input-box">
+            <span>Email</span>
+            <input type="email" name="email" id="email" placeholder="exemplo@gmail.com">
+        </div>
+        <div class="input-box">
+            <span>Sexo</span>
+            <input type="radio" name="genero" id="masculino" checked>
+            <span>masculino</span>
+            <input type="radio" name="genero" id="feminino">
+            <span>Feminino</span>
+        </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Endereço</legend>
+          
+           <div class="input-box">
+            <span>Cidade</span>
+            <input type="text" name="cidade" id="cidade" placeholder="Fortaleza">
+            </div>
+            <div class="input-box">
+                <span>Rua:</span>
+                <input type="text" name="rua" id="rua" placeholder="rua 01">
+            </div>
+            <div class="input-box">
+                <span>N°</span>
+                <input type="text" name="num" id="num" placeholder="45">
+            </div>
+        </fieldset>
+        <div class="btn">
+        <button class="my-button" type="button" onclick="SubmitForm()">Submit</button>
+        <button class="my-button" type="button" onclick="ToggleLigthMode()">Ligth-Mode</button>
+        <button class="my-button" type="button" onclick="ToggleDarkMode()">Dark-Mode</button>
+    </div>
+    </form>
+</div>
+<footer>
+    
+        <div class="image-container">
+          <img src="imgns/html.png" alt="Logo marca HTML">
+          <p><strong>HTML</strong></p>
+        </div>
+        <div class="image-container">
+          <img src="imgns/css.png" alt="Logo marca CSS">
+          <p><strong>CSS</strong></p>
+        </div>
+        <div class="image-container">
+          <img src="imgns/javascript.png" alt="Logo marca JavaScript">
+          <p><strong>JavaScript</strong></p>
+        </div>
+      </footer>
+  
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

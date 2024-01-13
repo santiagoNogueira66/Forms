@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #514d4d;
+}
+.container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1,minmax(0,1fr));
+    gap: 2vh;
+}
+
+header, h1 {
+    text-align: center;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.container form{
+    padding-top: 3vh;
+    background: #081D3C;
+    border-radius: 5vh;
+    max-width: 180vh;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    box-shadow: rgb(0, 0, 0) 0px 1px 0px 3px;
+}
+.container form span {
+    color: #fff;
+}
+.input-box{
+    margin-bottom: 3vh;
+    margin-left: 5vh;
+}
+fieldset{
+    padding-bottom: 5vh;
+    border-radius: 5vh;
+    max-width: 150vh;
+    margin-left: 4vh;
+}
+legend{
+color: red;
+margin-left: 5vh;
+margin-bottom: 2vh;
+}
+
+span{
+color:#000;
+padding-top: 5px;
+}
+
+input{
+    padding: 1vh;
+    border: 1px solid black;
+    border-radius: 5vh;
+    background-color: #514d4d;
+    font-size: 20px;
+    text-transform: lowercase;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.image-container {
+    margin-bottom: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  p {
+    margin-top: 10px;
+    font-size: 20px;
+    
+  }
+.btn{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5vh;
+}
+.my-button{
+    font-size: 20px;
+    padding: 2vh;
+    border-radius: 20vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+.my-button:hover{
+    border-color:blue;
+}
+.ligth-mode{
+background-color: #95b67f;
+}
+.ligth-mode .container form{
+    background-color: #7f8fff;
+    box-shadow: rgb(255, 255, 255) 0px 1px 0px 3px;
+}
+.ligth-mode .container form span{
+    color: #000;
+}
+.ligth-mode .container form legend{
+    color:#000;
+}
+.ligth-mode .container input{
+    background-color: #fff;
+}
+.dark-mode{
+background-color: #514d4d;
+color: #fff;
+}
+.dark-mode .container form {
+    background: #081D3C;
+    box-shadow: rgb(0, 0, 0) 0px 1px 0px 3px;
+}
