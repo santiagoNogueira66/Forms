@@ -9,7 +9,7 @@
 <body>
     <header><h1>Testando a TAG <i>fieldset</i></h1></header>
     <div class="container">
-    <form action="">
+    <form>
         <fieldset>
             <legend>Dados Pessoais</legend>
             <div class="input-box">
@@ -19,7 +19,7 @@
            
             <div class="input-box">
             <span>Data de Nascimento</span>
-            <input type="date" id="nascimento">
+            <input type="date" name="datanasc" id="nascimento">
         </div>
         <div class="input-box">
             <span>Email</span>
@@ -36,10 +36,13 @@
         
         <fieldset>
             <legend>Endereço</legend>
-          
+           <div class="input-box">
+            <span>CEP</span>
+           <input type="text" name="cep" id="cep" placeholder="12345678" maxlength="8" onblur="consultarCEP()">
+           </div>
            <div class="input-box">
             <span>Cidade</span>
-            <input type="text" name="cidade" id="cidade" placeholder="Fortaleza">
+            <input type="text" name="cidade" id="cidade" placeholder="Fortaleza" >
             </div>
             <div class="input-box">
                 <span>Rua:</span>

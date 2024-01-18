@@ -1,37 +1,87 @@
-function ToggleLigthMode(){
+var cepInput
+function ToggleLigthMode() {
     document.body.classList.add('ligth-mode')
     document.body.classList.remove('dark-mode')
 }
-function ToggleDarkMode(){
+
+function ToggleDarkMode() {
     document.body.classList.add('dark-mode')
     document.body.classList.remove('ligth-mode')
 }
-function SubmitForm(){
-    var nomeInput = document.querySelector('#name')
-    var datanascInput = document.querySelector('#nascimento')
-    var emailInput = document.querySelector('#email')
-    var cidadeInput = document.querySelector('#cidade')
-    var ruaInput = document.querySelector('#rua')
-    var numInput = document.querySelector('#num')
-    var generoInput = document.getElementsByName('genero')
+cepInput = document.querySelector('#cep')
+cepInput.addEventListener("keypress", (e) => {
+    const onlyNumbers = /^[0-9]$/
 
-    if (
-        nomeInput.value.trim() !== '' &&
-        datanascInput.value.trim() !== '' &&
-        emailInput.value.trim() !== '' &&
-        cidadeInput.value.trim() !== '' &&
-        ruaInput.value.trim() !== '' &&
-        numInput.value.trim() !== '' &&
-        generoInput !== ''
-    ) {
-        alert('Formulário preenchido com sucesso')
-        nomeInput.value = ''
-        datanascInput.value = ''
-        emailInput.value = ''
-        cidadeInput.value = ''
-        ruaInput.value = ''
-        numInput.value = ''
-    } else {
-        alert('Preencha todos os campos')
+    if (!onlyNumbers.test(e.key)) {
+        e.preventDefault()
     }
+})
+
+function consultarCEP() {
+    var cep = cepInput.value
+    cep = cep.replace('-', '')
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/', true)
+
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            var data = JSON.parse(xhr.responseText);
+            exibirResultado(data)
+        } else {
+            console.error('Erro ao consultar o CEP')
+        }
+    }
+
+    xhr.send();
+}
+
+function exibirResultado(data) {
+    if (data.erro) {
+        alert('CEP não encontrado.');
+    } else {
+        document.getElementById('cidade').value = data.localidade;
+        document.getElementById('rua').value = data.logradouro;
+    }
+}
+
+
+function SubmitForm() {
+    var formData = new FormData(document.forms['forms']);
+    
+    fetch('https://script.google.com/macros/s/AKfycbwt5chgKC8a-Uyap5r3L2BzQAzrCgyDjZYAoaFXZHdKHRSiwpaBV4lLJnpyul56z5h0/exec', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error('Erro ao enviar dados');
+        }
+    })
+    .then(data => {
+        alert('Dados enviados com sucesso!\n' + data);
+
+        // Limpar os campos após o envio bem-sucedido
+        var nomeInput = document.querySelector('#name');
+        var datanascInput = document.querySelector('#nascimento');
+        var emailInput = document.querySelector('#email');
+        var cidadeInput = document.querySelector('#cidade');
+        var ruaInput = document.querySelector('#rua');
+        var numInput = document.querySelector('#num');
+        var generoInput = document.getElementsByName('genero');
+
+        nomeInput.value = '';
+        datanascInput.value = '';
+        emailInput.value = '';
+        cidadeInput.value = '';
+        ruaInput.value = '';
+        numInput.value = '';
+
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao enviar dados. Por favor, tente novamente.');
+    });
 }
