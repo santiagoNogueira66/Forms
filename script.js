@@ -1,4 +1,9 @@
 var cepInput
+
+ function SubmitFormAndSendData(){
+    SubmitForm()
+    sendData()
+}
 function ToggleLigthMode() {
     document.body.classList.add('ligth-mode')
     document.body.classList.remove('dark-mode')
@@ -47,23 +52,6 @@ function exibirResultado(data) {
 
 
 function SubmitForm() {
-    var formData = new FormData(document.forms['forms']);
-    
-    fetch('https://script.google.com/macros/s/AKfycbwt5chgKC8a-Uyap5r3L2BzQAzrCgyDjZYAoaFXZHdKHRSiwpaBV4lLJnpyul56z5h0/exec', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw new Error('Erro ao enviar dados');
-        }
-    })
-    .then(data => {
-        alert('Dados enviados com sucesso!\n' + data); 
-
-        // Limpar os campos após o envio bem-sucedido
         var nomeInput = document.querySelector('#name');
         var datanascInput = document.querySelector('#nascimento');
         var emailInput = document.querySelector('#email');
@@ -79,9 +67,29 @@ function SubmitForm() {
         ruaInput.value = '';
         numInput.value = '';
 
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao enviar dados. Por favor, tente novamente.');
-    });
-} 
+    }
+    function sendData() {
+        var formData = new FormData(document.forms['forms']);
+    
+        fetch('https://script.google.com/macros/s/AKfycbwt5chgKC8a-Uyap5r3L2BzQAzrCgyDjZYAoaFXZHdKHRSiwpaBV4lLJnpyul56z5h0/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Erro ao enviar dados. Código de resposta: ' + response.status);
+            }
+        })
+        .then(data => {
+            alert('Dados enviados com sucesso!\n' + data);
+        })
+        .catch(error => {
+            console.error('Erro ao enviar dados:', error);
+            alert('Erro ao enviar dados. Por favor, tente novamente.');
+        });
+    }
+    
+    
+  
