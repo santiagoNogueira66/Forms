@@ -61,7 +61,7 @@ function SubmitForm() {
         }
     })
     .then(data => {
-        alert('Dados enviados com sucesso!\n' + data);
+        alert('Dados enviados com sucesso!\n' + data); 
 
         // Limpar os campos após o envio bem-sucedido
         var nomeInput = document.querySelector('#name');
@@ -84,4 +84,4 @@ function SubmitForm() {
         console.error('Erro:', error);
         alert('Erro ao enviar dados. Por favor, tente novamente.');
     });
-}
+} 
