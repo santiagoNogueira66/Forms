@@ -12,20 +12,21 @@ body{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(1,minmax(0,1fr));
+    min-width: 70vh;
     gap: 2vh;
 }
 
-header, h1 {
-    text-align: center;
+.title {
     padding-top: 3vh;
     padding-bottom: 3vh;
+    margin-left: 10vh;
 }
 
 .container form{
     padding-top: 3vh;
     background: #081D3C;
     border-radius: 5vh;
-    max-width: 180vh;
+    max-width: 130vh;
     margin-left: 5vh;
     margin-right: 5vh;
     box-shadow: rgb(0, 0, 0) 0px 1px 0px 3px;
@@ -41,8 +42,9 @@ header, h1 {
 fieldset{
     padding-bottom: 5vh;
     border-radius: 5vh;
-    max-width: 150vh;
+    max-width: 140vh;
     margin-left: 4vh;
+    
 }
 legend{
 color: red;
@@ -62,14 +64,20 @@ input{
     background-color: #514d4d;
     font-size: 20px;
     text-transform: lowercase;
+    width:  40%;
+}
+input[type="radio"]{
+width: 5%;
+padding: 5vh;
 }
 
 footer {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    text-align: center;
-    justify-content: center;
+    text-align: start;
+    justify-content: start;
+    margin-left: 10vh;
 }
 
 .image-container {
@@ -84,11 +92,12 @@ footer {
   p {
     margin-top: 10px;
     font-size: 20px;
-    
+    display: flex;
+    justify-content: center;
   }
 .btn{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-left: 5vh;
 }
 .my-button{
@@ -126,4 +135,9 @@ color: #fff;
 .dark-mode .container form {
     background: #081D3C;
     box-shadow: rgb(0, 0, 0) 0px 1px 0px 3px;
-}
+}/*
+@media (min-width: 600px){
+    .title{
+        margin-left: -50%;
+    }
+}*/

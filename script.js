@@ -31,65 +31,42 @@ function consultarCEP() {
 
     xhr.onload = function () {
         if (xhr.status == 200) {
-            var data = JSON.parse(xhr.responseText);
+            var data = JSON.parse(xhr.responseText)
             exibirResultado(data)
         } else {
             console.error('Erro ao consultar o CEP')
         }
     }
 
-    xhr.send();
+    xhr.send()
 }
 
 function exibirResultado(data) {
     if (data.erro) {
-        alert('CEP não encontrado.');
+        alert('CEP não encontrado.')
     } else {
-        document.getElementById('cidade').value = data.localidade;
-        document.getElementById('rua').value = data.logradouro;
+        document.getElementById('cidade').value = data.localidade
+        document.getElementById('rua').value = data.logradouro
     }
 }
 
 
 function SubmitForm() {
-        var nomeInput = document.querySelector('#name');
-        var datanascInput = document.querySelector('#nascimento');
-        var emailInput = document.querySelector('#email');
-        var cidadeInput = document.querySelector('#cidade');
-        var ruaInput = document.querySelector('#rua');
-        var numInput = document.querySelector('#num');
-        var generoInput = document.getElementsByName('genero');
+        var nomeInput = document.querySelector('#name')
+        var datanascInput = document.querySelector('#nascimento')
+        var emailInput = document.querySelector('#email')
+        var cidadeInput = document.querySelector('#cidade')
+        var ruaInput = document.querySelector('#rua')
+        var numInput = document.querySelector('#num')
 
-        nomeInput.value = '';
-        datanascInput.value = '';
-        emailInput.value = '';
-        cidadeInput.value = '';
-        ruaInput.value = '';
-        numInput.value = '';
+        nomeInput.value = ''
+        datanascInput.value = ''
+        emailInput.value = ''
+        cidadeInput.value = ''
+        ruaInput.value = ''
+        numInput.value = ''
+        cepInput.value = ''
+
+        alert("formulario preenchido com sucesso")
 
     }
-    function sendData() {
-        var formData = new FormData(document.forms['forms']);
-    
-        fetch('https://script.google.com/macros/s/AKfycbwt5chgKC8a-Uyap5r3L2BzQAzrCgyDjZYAoaFXZHdKHRSiwpaBV4lLJnpyul56z5h0/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.text();
-            } else {
-                throw new Error('Erro ao enviar dados. Código de resposta: ' + response.status);
-            }
-        })
-        .then(data => {
-            alert('Dados enviados com sucesso!\n' + data);
-        })
-        .catch(error => {
-            console.error('Erro ao enviar dados:', error);
-            alert('Erro ao enviar dados. Por favor, tente novamente.');
-        });
-    }
-    
-    
-  
